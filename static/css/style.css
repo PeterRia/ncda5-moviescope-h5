@@ -2621,6 +2621,31 @@ body.admin-page .timeline {
 }
 
 @media (max-width: 640px) {
+  .page-shell > *,
+  .hero-grid,
+  .hero-grid > *,
+  .tri-grid,
+  .tri-grid > *,
+  .panel,
+  .hero-copy,
+  .hero-panel,
+  .live-head,
+  .metric-grid {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .hero-copy h1,
+  .panel-head h2,
+  .live-subline {
+    overflow-wrap: anywhere;
+  }
+
+  .hero-actions,
+  .live-head {
+    flex-wrap: wrap;
+  }
+
   .section-head h1,
   .auth-panel h1 {
     font-size: clamp(28px, 8vw, 34px);
