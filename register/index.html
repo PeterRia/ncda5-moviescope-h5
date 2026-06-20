@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>注册 · MovieScope</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../static/css/style.css">
+  <meta name="csrf-token" content="ImNkYTliNmMxMGIyY2Y2MTlkZDMxNzA1M2RjMDIzNmVhNmE2NDlhMjci.ajawbA.lzOAmClZwV6yU51h0pEThdzFXE4">
+  <script defer src="../static/vendor/chart.umd.min.js"></script>
+  <script defer src="../static/js/app.js"></script>
+  
+<script>window.__STATIC_BASE__="../";</script>
+</head>
+<body class="">
+  <a class="skip-link" href="#mainContent">跳转到主内容</a>
+  <div class="atmosphere atmosphere-a"></div>
+  <div class="atmosphere atmosphere-b"></div>
+
+  <header class="site-header">
+    <a class="brand" href="../">
+      <span class="brand-pill">MS</span>
+      <span class="brand-text">
+        <strong>MovieScope</strong>
+        <small>票房可视化实验室</small>
+      </span>
+    </a>
+
+    <nav class="top-nav" aria-label="主导航">
+      <a class="" href="../" >首页</a>
+      <a class="" href="../rankings/" >票房榜</a>
+      <a class="" href="../dashboard/" >数据大屏</a>
+      <a class="" href="../news/" >电影资讯</a>
+      <a class="" href="../community/" >影迷社区</a>
+      <a class="" href="../messages/" >留言中心</a>
+      
+    </nav>
+
+    <div class="auth-nav" aria-label="账号入口">
+      
+        <a href="../login/" class="ghost-btn">登录</a>
+        <a href=".//" class="solid-btn">注册</a>
+      
+    </div>
+  </header>
+
+  
+
+  <main id="mainContent" class="page-shell">
+    
+      
+    
+
+    
+<section class="register-page" data-reveal>
+  <article class="register-card" aria-labelledby="registerTitle">
+    <h1 id="registerTitle">注册</h1>
+    <p class="register-intro">使用邮箱完成验证码验证后即可注册，并支持邮箱或用户名登录。</p>
+    <form method="post" class="register-form" id="registerForm">
+      <input type="hidden" name="name" id="registerName">
+      <input type="hidden" name="gender" value="保密">
+      <input type="hidden" name="phone" value="">
+
+      <label class="register-field">
+        <span>用户名</span>
+        <span class="register-control">
+          <span class="register-icon register-icon-user" aria-hidden="true"></span>
+          <input type="text" name="account" id="registerAccount" minlength="4" maxlength="20" pattern="[A-Za-z0-9_]{4,20}" placeholder="请输入用户名" autocomplete="username" required>
+        </span>
+      </label>
+
+      <label class="register-field">
+        <span>密码</span>
+        <span class="register-control">
+          <span class="register-icon register-icon-lock" aria-hidden="true"></span>
+          <input type="password" name="password" minlength="8" placeholder="输入密码，最短 8 位" autocomplete="new-password" required>
+        </span>
+      </label>
+
+      <label class="register-field">
+        <span>确认密码</span>
+        <span class="register-control">
+          <span class="register-icon register-icon-lock" aria-hidden="true"></span>
+          <input type="password" name="confirm_password" minlength="8" placeholder="确认密码" autocomplete="new-password" required>
+        </span>
+      </label>
+
+      <label class="register-field">
+        <span>邮箱</span>
+        <span class="register-control register-control-with-button">
+          <span class="register-icon register-icon-mail" aria-hidden="true"></span>
+          <input type="email" name="email" id="registerEmail" placeholder="输入邮箱地址" autocomplete="email" required>
+          <button class="register-code-button" type="button" id="sendEmailCode">获取验证码</button>
+        </span>
+        <span class="register-note">验证码将发送到该邮箱，发送后请尽快填写。</span>
+      </label>
+
+      <label class="register-field">
+        <span>验证码</span>
+        <span class="register-control">
+          <span class="register-icon register-icon-key" aria-hidden="true"></span>
+          <input type="text" name="email_code" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" placeholder="输入验证码" autocomplete="one-time-code" >
+        </span>
+      </label>
+
+      
+
+      <p class="register-status" id="registerEmailStatus" role="status" aria-live="polite"></p>
+      <button class="register-submit" type="submit">注册</button>
+    </form>
+
+    <div class="register-divider"><span>或</span></div>
+    <button class="register-alt" type="button" disabled>其他注册选项</button>
+    <p class="register-login">已有账户？ <a href="../login/">登录</a></p>
+  </article>
+</section>
+
+<script>
+  (function () {
+    const form = document.getElementById('registerForm');
+    const accountInput = document.getElementById('registerAccount');
+    const nameInput = document.getElementById('registerName');
+    const emailInput = document.getElementById('registerEmail');
+    const sendButton = document.getElementById('sendEmailCode');
+    const status = document.getElementById('registerEmailStatus');
+    const csrfMeta = document.querySelector('meta[name="csrf-token"]');
+    const csrfToken = csrfMeta ? csrfMeta.getAttribute('content') : '';
+    const sendButtonText = sendButton.textContent;
+    let countdownTimer = null;
+
+    function setStatus(message, type) {
+      status.textContent = message || '';
+      status.dataset.type = type || '';
+    }
+
+    function setSendingState(isSending) {
+      sendButton.disabled = isSending;
+      sendButton.setAttribute('aria-busy', isSending ? 'true' : 'false');
+      sendButton.textContent = isSending ? '发送中...' : sendButtonText;
+    }
+
+    function startCountdown(seconds) {
+      let remain = seconds;
+      sendButton.textContent = remain + 's';
+      countdownTimer = window.setInterval(function () {
+        remain -= 1;
+        if (remain <= 0) {
+          window.clearInterval(countdownTimer);
+          setSendingState(false);
+          return;
+        }
+        sendButton.textContent = remain + 's';
+      }, 1000);
+    }
+
+    form.addEventListener('submit', function () {
+      nameInput.value = accountInput.value.trim();
+    });
+
+    sendButton.addEventListener('click', async function () {
+      const email = emailInput.value.trim();
+      if (!emailInput.checkValidity()) {
+        setStatus('请输入有效的邮箱地址。', 'error');
+        emailInput.focus();
+        return;
+      }
+
+      const payload = new FormData();
+      payload.append('email', email);
+      setSendingState(true);
+      setStatus('正在发送验证码...', 'pending');
+
+      try {
+        const response = await fetch('/register/email-code', {
+          method: 'POST',
+          headers: csrfToken ? { 'X-CSRFToken': csrfToken } : {},
+          body: payload
+        });
+        const data = await response.json();
+        if (!response.ok || !data.ok) {
+          setSendingState(false);
+          setStatus(data.message || '验证码暂未发送成功，请稍后重试。', 'error');
+          return;
+        }
+        setStatus(data.message || '验证码已发送，请查看邮箱。', 'success');
+        startCountdown(60);
+      } catch (error) {
+        setSendingState(false);
+        setStatus('验证码暂未发送成功，请稍后重试。', 'error');
+      }
+    });
+  })();
+</script>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 MovieScope · 基于电影数据叙事的可视化系统</p>
+  </footer>
+  <script>
+    (function () {
+      const tokenMeta = document.querySelector('meta[name="csrf-token"]');
+      const csrfToken = tokenMeta ? tokenMeta.getAttribute('content') : '';
+      if (!csrfToken) return;
+
+      document.querySelectorAll('form[method]').forEach((form) => {
+        if ((form.getAttribute('method') || '').toLowerCase() !== 'post') return;
+        if (form.querySelector('input[name="csrf_token"]')) return;
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'csrf_token';
+        input.value = csrfToken;
+        form.prepend(input);
+      });
+
+      if (window.fetch) {
+        const nativeFetch = window.fetch.bind(window);
+        window.fetch = function (resource, options) {
+          const opts = options || {};
+          const method = String(opts.method || 'GET').toUpperCase();
+          if (method === 'POST') {
+            const headers = new Headers(opts.headers || {});
+            if (!headers.has('X-CSRFToken')) {
+              headers.set('X-CSRFToken', csrfToken);
+            }
+            opts.headers = headers;
+          }
+          return nativeFetch(resource, opts);
+        };
+      }
+    })();
+  </script>
+</body>
+</html>

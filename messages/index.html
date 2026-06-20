@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MovieScope · 留言中心</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../static/css/style.css">
+  <meta name="csrf-token" content="ImU5Nzg1OTA4OTRiNmJlYzAyMDI1NmI1Y2U4YWI1Nzc1MjMyN2Y1ZmQi.ajawbA.SEwWfmMd1W7eOh09_y1y-HX6WIQ">
+  <script defer src="../static/vendor/chart.umd.min.js"></script>
+  <script defer src="../static/js/app.js"></script>
+  
+<script>window.__STATIC_BASE__="../";</script>
+</head>
+<body class="">
+  <a class="skip-link" href="#mainContent">跳转到主内容</a>
+  <div class="atmosphere atmosphere-a"></div>
+  <div class="atmosphere atmosphere-b"></div>
+
+  <header class="site-header">
+    <a class="brand" href="../">
+      <span class="brand-pill">MS</span>
+      <span class="brand-text">
+        <strong>MovieScope</strong>
+        <small>票房可视化实验室</small>
+      </span>
+    </a>
+
+    <nav class="top-nav" aria-label="主导航">
+      <a class="" href="../" >首页</a>
+      <a class="" href="../rankings/" >票房榜</a>
+      <a class="" href="../dashboard/" >数据大屏</a>
+      <a class="" href="../news/" >电影资讯</a>
+      <a class="" href="../community/" >影迷社区</a>
+      <a class="active" href=".//" aria-current="page">留言中心</a>
+      
+    </nav>
+
+    <div class="auth-nav" aria-label="账号入口">
+      
+        <a href="../login/" class="ghost-btn">登录</a>
+        <a href="../register/" class="solid-btn">注册</a>
+      
+    </div>
+  </header>
+
+  
+
+  <main id="mainContent" class="page-shell">
+    
+      
+    
+
+    
+<section class="section-head" data-reveal>
+  <h1>留言中心</h1>
+  <p>
+    用于收集功能建议、交互反馈与数据需求。
+    
+      资讯数据同步时间：2026-06-20 18:17:34。
+    
+  </p>
+</section>
+
+<section class="panel" data-reveal>
+  <div class="panel-head">
+    <h2>提交留言</h2>
+    <span class="tag">游客可用昵称留言</span>
+  </div>
+  <p class="module-note">留言默认进入审核流程，审核通过后会在“公开留言”中展示给所有用户。</p>
+  <form method="post" class="editor-form">
+    
+    <label>
+      你的昵称
+      <input type="text" name="guest_name" placeholder="例如：电影观众A（可选）">
+    </label>
+    
+    <label>
+      你的建议
+      <textarea name="content" rows="5" placeholder="例如：希望新增按城市维度查看票房趋势..." required></textarea>
+    </label>
+    <button class="solid-btn" type="submit">提交</button>
+  </form>
+</section>
+
+<section class="panel" data-reveal>
+  <div class="panel-head">
+    <h2>公开留言</h2>
+  </div>
+  <div class="timeline">
+    
+      <article class="timeline-item">
+        <div class="timeline-meta">
+          <strong><a href="./m_hot_1/">系统公告</a></strong>
+          <small>2026-06-20 18:17</small>
+        </div>
+        <p>电影资讯已切换为互联网实时热点源，并支持来源追踪。</p>
+        
+          <blockquote>系统回复：你可以在资讯详情页点击“查看原文”验证来源。</blockquote>
+        
+      </article>
+    
+      <article class="timeline-item">
+        <div class="timeline-meta">
+          <strong><a href="./m_hot_2/">数据维护</a></strong>
+          <small>2026-06-20 18:17</small>
+        </div>
+        <p>建议每 6-12 小时执行一次新闻抓取脚本，保持资讯时效性。</p>
+        
+          <blockquote>系统回复：脚本路径：newFlask/scripts/content/fetch_hot_movie_news.py</blockquote>
+        
+      </article>
+    
+      <article class="timeline-item">
+        <div class="timeline-meta">
+          <strong><a href="./m_hot_3/">热点提醒</a></strong>
+          <small>2026-06-20 18:17</small>
+        </div>
+        <p>当前头条：梁朝伟在上海大师班反思《沉默的朋友》、王家卫以及为什么他的电影必须在电影院上映</p>
+        
+          <blockquote>系统回复：可结合数据大屏查看票房和行业舆论的联动变化。</blockquote>
+        
+      </article>
+    
+      <article class="timeline-item">
+        <div class="timeline-meta">
+          <strong><a href="./um20260309003255363324/">zxy456456</a></strong>
+          <small>2026-03-09 00:32</small>
+        </div>
+        <p>为什么看不到zxy123123的留言了？</p>
+        
+          <blockquote>系统回复：感谢反馈，我们会在后续版本持续优化。</blockquote>
+        
+      </article>
+    
+  </div>
+</section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 MovieScope · 基于电影数据叙事的可视化系统</p>
+  </footer>
+  <script>
+    (function () {
+      const tokenMeta = document.querySelector('meta[name="csrf-token"]');
+      const csrfToken = tokenMeta ? tokenMeta.getAttribute('content') : '';
+      if (!csrfToken) return;
+
+      document.querySelectorAll('form[method]').forEach((form) => {
+        if ((form.getAttribute('method') || '').toLowerCase() !== 'post') return;
+        if (form.querySelector('input[name="csrf_token"]')) return;
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'csrf_token';
+        input.value = csrfToken;
+        form.prepend(input);
+      });
+
+      if (window.fetch) {
+        const nativeFetch = window.fetch.bind(window);
+        window.fetch = function (resource, options) {
+          const opts = options || {};
+          const method = String(opts.method || 'GET').toUpperCase();
+          if (method === 'POST') {
+            const headers = new Headers(opts.headers || {});
+            if (!headers.has('X-CSRFToken')) {
+              headers.set('X-CSRFToken', csrfToken);
+            }
+            opts.headers = headers;
+          }
+          return nativeFetch(resource, opts);
+        };
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>留言详情 · MovieScope</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../static/css/style.css">
+  <meta name="csrf-token" content="IjZiMGU2ZmM0NTVlZTJlYmUyODk1MWU4MDYwZWI4NmRjMDk4ZjMxMTki.ajawdA.ihDlkzo7dFAZ3rw171tb53MsKD4">
+  <script defer src="../../static/vendor/chart.umd.min.js"></script>
+  <script defer src="../../static/js/app.js"></script>
+  
+<script>window.__STATIC_BASE__="../../";</script>
+</head>
+<body class="">
+  <a class="skip-link" href="#mainContent">跳转到主内容</a>
+  <div class="atmosphere atmosphere-a"></div>
+  <div class="atmosphere atmosphere-b"></div>
+
+  <header class="site-header">
+    <a class="brand" href="../../">
+      <span class="brand-pill">MS</span>
+      <span class="brand-text">
+        <strong>MovieScope</strong>
+        <small>票房可视化实验室</small>
+      </span>
+    </a>
+
+    <nav class="top-nav" aria-label="主导航">
+      <a class="" href="../../" >首页</a>
+      <a class="" href="../../rankings/" >票房榜</a>
+      <a class="" href="../../dashboard/" >数据大屏</a>
+      <a class="" href="../../news/" >电影资讯</a>
+      <a class="" href="../../community/" >影迷社区</a>
+      <a class="active" href="../" aria-current="page">留言中心</a>
+      
+    </nav>
+
+    <div class="auth-nav" aria-label="账号入口">
+      
+        <a href="../../login/" class="ghost-btn">登录</a>
+        <a href="../../register/" class="solid-btn">注册</a>
+      
+    </div>
+  </header>
+
+  
+
+  <main id="mainContent" class="page-shell">
+    
+      
+    
+
+    
+<article class="article-wrap" data-reveal>
+  <header class="article-header">
+    <p class="eyebrow">用户留言</p>
+    <h1>数据维护</h1>
+    <p>2026-06-20 18:17</p>
+  </header>
+  <section class="article-body">
+    <p>建议每 6-12 小时执行一次新闻抓取脚本，保持资讯时效性。</p>
+    
+      <blockquote>系统回复：脚本路径：newFlask/scripts/content/fetch_hot_movie_news.py</blockquote>
+    
+  </section>
+</article>
+
+<section class="panel" data-reveal>
+  <div class="panel-head">
+    <h2>近期留言</h2>
+    <a href="../">返回留言中心</a>
+  </div>
+  <ul class="compact-list">
+    
+      <li>
+        <a href="../m_hot_1/"><strong>系统公告</strong></a>
+        <p>电影资讯已切换为互联网实时热点源，并支持来源追踪。</p>
+        <small>2026-06-20 18:17</small>
+      </li>
+    
+      <li>
+        <a href="../m_hot_3/"><strong>热点提醒</strong></a>
+        <p>当前头条：梁朝伟在上海大师班反思《沉默的朋友》、王家卫以及为什么他的电影必须在电影院上映</p>
+        <small>2026-06-20 18:17</small>
+      </li>
+    
+      <li>
+        <a href="../um20260309003255363324/"><strong>zxy456456</strong></a>
+        <p>为什么看不到zxy123123的留言了？</p>
+        <small>2026-03-09 00:32</small>
+      </li>
+    
+  </ul>
+</section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 MovieScope · 基于电影数据叙事的可视化系统</p>
+  </footer>
+  <script>
+    (function () {
+      const tokenMeta = document.querySelector('meta[name="csrf-token"]');
+      const csrfToken = tokenMeta ? tokenMeta.getAttribute('content') : '';
+      if (!csrfToken) return;
+
+      document.querySelectorAll('form[method]').forEach((form) => {
+        if ((form.getAttribute('method') || '').toLowerCase() !== 'post') return;
+        if (form.querySelector('input[name="csrf_token"]')) return;
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'csrf_token';
+        input.value = csrfToken;
+        form.prepend(input);
+      });
+
+      if (window.fetch) {
+        const nativeFetch = window.fetch.bind(window);
+        window.fetch = function (resource, options) {
+          const opts = options || {};
+          const method = String(opts.method || 'GET').toUpperCase();
+          if (method === 'POST') {
+            const headers = new Headers(opts.headers || {});
+            if (!headers.has('X-CSRFToken')) {
+              headers.set('X-CSRFToken', csrfToken);
+            }
+            opts.headers = headers;
+          }
+          return nativeFetch(resource, opts);
+        };
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MovieScope · 影迷社区</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../static/css/style.css">
+  <meta name="csrf-token" content="ImNmYzMxMWYyYjUwYzczZjdhNWQ2ZDZmZDg0ZmU1MTlhZjFlNWY2NTMi.ajawbA.z2WR5BupGn__vru326EFk9CHaCA">
+  <script defer src="../static/vendor/chart.umd.min.js"></script>
+  <script defer src="../static/js/app.js"></script>
+  
+<script>window.__STATIC_BASE__="../";</script>
+</head>
+<body class="">
+  <a class="skip-link" href="#mainContent">跳转到主内容</a>
+  <div class="atmosphere atmosphere-a"></div>
+  <div class="atmosphere atmosphere-b"></div>
+
+  <header class="site-header">
+    <a class="brand" href="../">
+      <span class="brand-pill">MS</span>
+      <span class="brand-text">
+        <strong>MovieScope</strong>
+        <small>票房可视化实验室</small>
+      </span>
+    </a>
+
+    <nav class="top-nav" aria-label="主导航">
+      <a class="" href="../" >首页</a>
+      <a class="" href="../rankings/" >票房榜</a>
+      <a class="" href="../dashboard/" >数据大屏</a>
+      <a class="" href="../news/" >电影资讯</a>
+      <a class="active" href=".//" aria-current="page">影迷社区</a>
+      <a class="" href="../messages/" >留言中心</a>
+      
+    </nav>
+
+    <div class="auth-nav" aria-label="账号入口">
+      
+        <a href="../login/" class="ghost-btn">登录</a>
+        <a href="../register/" class="solid-btn">注册</a>
+      
+    </div>
+  </header>
+
+  
+
+  <main id="mainContent" class="page-shell">
+    
+      
+    
+
+    
+<section class="section-head" data-reveal>
+  <h1>影迷社区</h1>
+  <p>
+    社区内容已升级为 MySQL 存储，支持发帖、多图、话题、评论、点赞、收藏、关注和举报。
+    
+      热点内容同步时间：2026-06-20 18:17:34。
+    
+  </p>
+</section>
+
+<section class="panel" data-reveal>
+  <form method="get" class="search-bar">
+    <input type="text" name="q" value="" placeholder="搜索标题、内容、作者、电影名">
+    <select name="topic">
+      <option value="">全部话题</option>
+      
+        <option value="动画电影" >动画电影</option>
+      
+        <option value="口碑传播" >口碑传播</option>
+      
+        <option value="夜场表现" >夜场表现</option>
+      
+        <option value="大屏设计" >大屏设计</option>
+      
+        <option value="头部影片" >头部影片</option>
+      
+        <option value="家庭观影" >家庭观影</option>
+      
+        <option value="封面流" >封面流</option>
+      
+        <option value="悬疑电影" >悬疑电影</option>
+      
+        <option value="排片效率" >排片效率</option>
+      
+        <option value="数据故事" >数据故事</option>
+      
+        <option value="武侠电影" >武侠电影</option>
+      
+        <option value="留存观察" >留存观察</option>
+      
+        <option value="票房分析" >票房分析</option>
+      
+        <option value="稳定票房" >稳定票房</option>
+      
+        <option value="经营视角" >经营视角</option>
+      
+        <option value="视觉风格" >视觉风格</option>
+      
+        <option value="论文展示" >论文展示</option>
+      
+        <option value="走势判断" >走势判断</option>
+      
+    </select>
+    <select name="movie">
+      <option value="">全部关联电影</option>
+      
+        <option value="夜王" >夜王</option>
+      
+        <option value="惊蛰无声" >惊蛰无声</option>
+      
+        <option value="熊出没·年年有熊" >熊出没·年年有熊</option>
+      
+        <option value="镖人：风起大漠" >镖人：风起大漠</option>
+      
+        <option value="飞驰人生3" >飞驰人生3</option>
+      
+    </select>
+    <button class="ghost-btn" type="submit">筛选</button>
+    <a class="ghost-btn" href=".//">清空</a>
+  </form>
+</section>
+
+<section class="dual-grid" data-reveal>
+  <article class="panel">
+    <div class="panel-head">
+      <h2>发布讨论</h2>
+      <span class="tag">游客可发布（待审核）</span>
+    </div>
+    <form method="post" class="editor-form" enctype="multipart/form-data">
+      
+      <label>
+        你的昵称
+        <input type="text" name="guest_name" placeholder="例如：影迷小林（可选）">
+      </label>
+      
+      <label>
+        帖子标题
+        <input type="text" name="title" maxlength="120" placeholder="例如：春节档最强票房黑马会是谁？" required>
+      </label>
+      <label>
+        关联电影
+        <input type="text" name="related_movie" maxlength="120" placeholder="例如：飞驰人生3">
+      </label>
+      <label>
+        话题（多个用空格或逗号分隔）
+        <input type="text" name="topics" maxlength="160" placeholder="例如：春节档 口碑逆袭 票房预测">
+      </label>
+      <label>
+        图片 URL（支持多张，换行分隔；可填 /static/ 开头本地地址）
+        <textarea name="media_urls" rows="3" placeholder="https://example.com/a.jpg&#10;https://example.com/b.jpg"></textarea>
+      </label>
+      <label>
+        本地图片上传（可多选）
+        <input type="file" name="media_files" accept="image/*" multiple>
+      </label>
+      <label>
+        内容
+        <textarea name="content" rows="6" placeholder="写下你的数据分析、观影观点或讨论问题..." required></textarea>
+      </label>
+      <button class="solid-btn" type="submit">发布帖子</button>
+    </form>
+  </article>
+
+  <article class="panel dense-panel">
+    <div class="panel-head"><h2>社区规则</h2></div>
+    <ul class="insight-list">
+      <li>建议围绕电影票房、排片效率、口碑传播等主题发帖。</li>
+      <li>图片尽量使用电影相关素材，避免无关内容。</li>
+      <li>普通用户发帖/评论默认进入待审核；管理员可直接发布。</li>
+      <li>冻结账号可登录浏览，但不能发帖或评论。</li>
+    </ul>
+  </article>
+</section>
+
+<section class="panel" data-reveal>
+  <div class="panel-head">
+    <h2>最新帖子（6）</h2>
+  </div>
+  <div class="timeline">
+    
+      <article class="timeline-item">
+        <div class="timeline-meta">
+          <strong>票房研究组</strong>
+          <small>2026-04-15 11:05</small>
+        </div>
+
+        <h3><a href="./demo_post_boxoffice_strategy/">如果只看近 21 天走势，飞驰人生3 的优势到底来自宣发还是留存？</a></h3>
+
+        
+          <p><span class="tag">关联电影：飞驰人生3</span></p>
+        
+
+        
+          <div class="community-media-grid">
+            
+              <img src="../static/media/movie_gallery/movie_1.jpg" alt="如果只看近 21 天走势，飞驰人生3 的优势到底来自宣发还是留存？-素材1" loading="lazy">
+            
+              <img src="../static/media/movie_gallery/movie_3.jpg" alt="如果只看近 21 天走势，飞驰人生3 的优势到底来自宣发还是留存？-素材2" loading="lazy">
+            
+          </div>
+        
+
+        <p>我把近 21 天的走势和首页前列榜单对了一遍，飞驰人生3 的领先并不只是首波宣发带来的。它在排片已经相对稳定的情况下，仍然保持了更高的场均人次，这说明影片的留存能力还在起作用。对于数据大屏来说，这种“热度没有塌、效率也没掉”的片子最适合拿来做头部样本。</p>
+
+        <div class="chips">
+          
+            <span>#票房分析</span>
+          
+            <span>#头部影片</span>
+          
+            <span>#留存观察</span>
+          
+        </div>
+
+        <div class="community-stats">
+          <span>点赞 18</span>
+          <span>收藏 9</span>
+          <span>评论 2</span>
+        </div>
+
+        <div class="admin-inline-actions">
+          <a class="ghost-btn" href="./demo_post_boxoffice_strategy/">查看详情</a>
+          
+            <a class="ghost-btn" href="../login/">登录后互动</a>
+          
+        </div>
+      </article>
+    
+      <article class="timeline-item">
+        <div class="timeline-meta">
+          <strong>视觉叙事编辑</strong>
+          <small>2026-04-15 10:38</small>
+        </div>
+
+        <h3><a href="./demo_post_wuxia_visual/">镖人：风起大漠为什么特别适合放在首页封面流里展示？</a></h3>
+
+        
+          <p><span class="tag">关联电影：镖人：风起大漠</span></p>
+        
+
+        
+          <div class="community-media-grid">
+            
+              <img src="../static/media/movie_gallery/movie_2.jpg" alt="镖人：风起大漠为什么特别适合放在首页封面流里展示？-素材1" loading="lazy">
+            
+              <img src="../static/media/movie_gallery/movie_4.jpg" alt="镖人：风起大漠为什么特别适合放在首页封面流里展示？-素材2" loading="lazy">
+            
+          </div>
+        
+
+        <p>这部片子的海报和剧照都非常适合做中心卡片：轮廓强、色彩重、人物识别度高。更关键的是，它当前又确实处在已发布票房榜前列，不是单纯靠视觉好看硬塞进首页。换句话说，它既满足数据逻辑，也满足视觉展示逻辑。</p>
+
+        <div class="chips">
+          
+            <span>#封面流</span>
+          
+            <span>#武侠电影</span>
+          
+            <span>#视觉风格</span>
+          
+        </div>
+
+        <div class="community-stats">
+          <span>点赞 14</span>
+          <span>收藏 8</span>
+          <span>评论 1</span>
+        </div>
+
+        <div class="admin-inline-actions">
+          <a class="ghost-btn" href="./demo_post_wuxia_visual/">查看详情</a>
+          
+            <a class="ghost-btn" href="../login/">登录后互动</a>
+          
+        </div>
+      </article>
+    
+      <article class="timeline-item">
+        <div class="timeline-meta">
+          <strong>口碑传播观察员</strong>
+          <small>2026-04-15 10:06</small>
+        </div>
+
+        <h3><a href="./demo_post_thriller_wordmouth/">惊蛰无声的后劲，可能比它现在的日票房排名更值得看</a></h3>
+
+        
+          <p><span class="tag">关联电影：惊蛰无声</span></p>
+        
+
+        
+          <div class="community-media-grid">
+            
+              <img src="../static/media/movie_gallery/movie_3.jpg" alt="惊蛰无声的后劲，可能比它现在的日票房排名更值得看-素材1" loading="lazy">
+            
+          </div>
+        
+
+        <p>悬疑片的走势很容易被误判，因为大家往往只盯着当天名次。实际上，这类影片更需要看评论热度、二次传播和后续排片是否稳住。惊蛰无声现在的数据就很典型：它没有压到榜一，但讨论价值和走势弹性都比很多“开局猛、掉得快”的影片更强。</p>
+
+        <div class="chips">
+          
+            <span>#悬疑电影</span>
+          
+            <span>#口碑传播</span>
+          
+            <span>#走势判断</span>
+          
+        </div>
+
+        <div class="community-stats">
+          <span>点赞 11</span>
+          <span>收藏 6</span>
+          <span>评论 1</span>
+        </div>
+
+        <div class="admin-inline-actions">
+          <a class="ghost-btn" href="./demo_post_thriller_wordmouth/">查看详情</a>
+          
+            <a class="ghost-btn" href="../login/">登录后互动</a>
+          
+        </div>
+      </article>
+    
+      <article class="timeline-item">
+        <div class="timeline-meta">
+          <strong>家庭观影记录员</strong>
+          <small>2026-04-15 09:42</small>
+        </div>
+
+        <h3><a href="./demo_post_animation_family/">熊出没·年年有熊的数据为什么特别适合拿来解释“稳定票房”</a></h3>
+
+        
+          <p><span class="tag">关联电影：熊出没·年年有熊</span></p>
+        
+
+        
+          <div class="community-media-grid">
+            
+              <img src="../static/media/movie_gallery/movie_5.jpg" alt="熊出没·年年有熊的数据为什么特别适合拿来解释“稳定票房”-素材1" loading="lazy">
+            
+          </div>
+        
+
+        <p>动画电影不一定天天冲高，但它们在家庭观影场景里的稳定性很强。只要周末和节假日还能把观众带回来，曲线就不会崩。对论文展示来说，这类样本很重要，因为它能帮助你解释“高票房”和“高效率”之间不完全等价。</p>
+
+        <div class="chips">
+          
+            <span>#动画电影</span>
+          
+            <span>#家庭观影</span>
+          
+            <span>#稳定票房</span>
+          
+        </div>
+
+        <div class="community-stats">
+          <span>点赞 9</span>
+          <span>收藏 5</span>
+          <span>评论 1</span>
+        </div>
+
+        <div class="admin-inline-actions">
+          <a class="ghost-btn" href="./demo_post_animation_family/">查看详情</a>
+          
+            <a class="ghost-btn" href="../login/">登录后互动</a>
+          
+        </div>
+      </article>
+    
+      <article class="timeline-item">
+        <div class="timeline-meta">
+          <strong>夜场样本组</strong>
+          <small>2026-04-15 09:10</small>
+        </div>
+
+        <h3><a href="/community/demo_post_night_market">夜王的日票房不算最高，但它的排片效率值得单独拉出来看</a></h3>
+
+        
+          <p><span class="tag">关联电影：夜王</span></p>
+        
+
+        
+          <div class="community-media-grid">
+            
+              <img src="../static/media/movie_gallery/movie_6.jpg" alt="夜王的日票房不算最高，但它的排片效率值得单独拉出来看-素材1" loading="lazy">
+            
+          </div>
+        
+
+        <p>夜王最有意思的不是绝对票房，而是它在特定时段和特定排片规模下依旧能维持不错转化。很多时候，影院经营更关心的是“单位排片值不值”，不是单纯冲榜。把它放进排片效率散点图里看，信息量会比放在普通排行榜里大得多。</p>
+
+        <div class="chips">
+          
+            <span>#排片效率</span>
+          
+            <span>#夜场表现</span>
+          
+            <span>#经营视角</span>
+          
+        </div>
+
+        <div class="community-stats">
+          <span>点赞 8</span>
+          <span>收藏 4</span>
+          <span>评论 0</span>
+        </div>
+
+        <div class="admin-inline-actions">
+          <a class="ghost-btn" href="/community/demo_post_night_market">查看详情</a>
+          
+            <a class="ghost-btn" href="../login/">登录后互动</a>
+          
+        </div>
+      </article>
+    
+      <article class="timeline-item">
+        <div class="timeline-meta">
+          <strong>图表叙事设计师</strong>
+          <small>2026-04-15 08:36</small>
+        </div>
+
+        <h3><a href="/community/demo_post_dashboard_story">为什么我更喜欢“图表 + 结论 + 解释”的 dashboard，而不是把图全堆在一页？</a></h3>
+
+        
+
+        
+          <div class="community-media-grid">
+            
+              <img src="../static/media/movie_gallery/movie_7.jpg" alt="为什么我更喜欢“图表 + 结论 + 解释”的 dashboard，而不是把图全堆在一页？-素材1" loading="lazy">
+            
+              <img src="../static/media/movie_gallery/movie_8.jpg" alt="为什么我更喜欢“图表 + 结论 + 解释”的 dashboard，而不是把图全堆在一页？-素材2" loading="lazy">
+            
+          </div>
+        
+
+        <p>单纯把图表铺满页面，很难让观众理解你真正想表达的重点。现在这种 story block 的方式更适合论文演示：先给图，再给一句结论，再补两三条解释。观众不用先懂所有指标，也能顺着页面把故事读下来。</p>
+
+        <div class="chips">
+          
+            <span>#数据故事</span>
+          
+            <span>#大屏设计</span>
+          
+            <span>#论文展示</span>
+          
+        </div>
+
+        <div class="community-stats">
+          <span>点赞 16</span>
+          <span>收藏 10</span>
+          <span>评论 1</span>
+        </div>
+
+        <div class="admin-inline-actions">
+          <a class="ghost-btn" href="/community/demo_post_dashboard_story">查看详情</a>
+          
+            <a class="ghost-btn" href="../login/">登录后互动</a>
+          
+        </div>
+      </article>
+    
+  </div>
+</section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 MovieScope · 基于电影数据叙事的可视化系统</p>
+  </footer>
+  <script>
+    (function () {
+      const tokenMeta = document.querySelector('meta[name="csrf-token"]');
+      const csrfToken = tokenMeta ? tokenMeta.getAttribute('content') : '';
+      if (!csrfToken) return;
+
+      document.querySelectorAll('form[method]').forEach((form) => {
+        if ((form.getAttribute('method') || '').toLowerCase() !== 'post') return;
+        if (form.querySelector('input[name="csrf_token"]')) return;
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'csrf_token';
+        input.value = csrfToken;
+        form.prepend(input);
+      });
+
+      if (window.fetch) {
+        const nativeFetch = window.fetch.bind(window);
+        window.fetch = function (resource, options) {
+          const opts = options || {};
+          const method = String(opts.method || 'GET').toUpperCase();
+          if (method === 'POST') {
+            const headers = new Headers(opts.headers || {});
+            if (!headers.has('X-CSRFToken')) {
+              headers.set('X-CSRFToken', csrfToken);
+            }
+            opts.headers = headers;
+          }
+          return nativeFetch(resource, opts);
+        };
+      }
+    })();
+  </script>
+</body>
+</html>
